@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfa4wtvu18owy"]
+
+[ext_resource type="Texture2D" uid="uid://daoodbl3jhujc" path="res://player/Shoot/enemy-death.png" id="1_6oybb"]
+[ext_resource type="Script" path="res://Levels/Enemies/enemydeatheffect.gd" id="2_mxdee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1g7b"]
+atlas = ExtResource("1_6oybb")
+region = Rect2(0, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hdaq"]
+atlas = ExtResource("1_6oybb")
+region = Rect2(67, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbo3f"]
+atlas = ExtResource("1_6oybb")
+region = Rect2(134, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a07y"]
+atlas = ExtResource("1_6oybb")
+region = Rect2(201, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a51p"]
+atlas = ExtResource("1_6oybb")
+region = Rect2(268, 0, 67, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8iut7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1g7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hdaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbo3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a07y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a51p")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Death",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemydeatheffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8iut7")
+animation = &"Death"
+autoplay = "Death"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("2_mxdee")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true

@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhxunngq7sn3"]
+
+[ext_resource type="Script" path="res://UI/MainScreen/settings_menu_scene.gd" id="1_k17wt"]
+[ext_resource type="Texture2D" uid="uid://ba3xxjpuiwskt" path="res://UI/Theme/environment-preview.png" id="2_ia58u"]
+[ext_resource type="Theme" uid="uid://da1skl5aevho5" path="res://UI/Theme/new_theme.tres" id="3_yuhvl"]
+[ext_resource type="Texture2D" uid="uid://cq4gnrjpi8mq6" path="res://UI/Theme/player-run-4.png" id="4_dt272"]
+[ext_resource type="Texture2D" uid="uid://dteio1u6lreoq" path="res://UI/Theme/crab-idle-3.png" id="5_k2tuk"]
+
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_k17wt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.752941, 0.34902, 0.815686, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -287.0
+offset_top = -69.0
+offset_right = 289.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ia58u")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yuhvl")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="WindowModeOptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "main menu
+"
+
+[node name="Player-run-4" type="Sprite2D" parent="."]
+position = Vector2(240, 232)
+texture = ExtResource("4_dt272")
+
+[node name="Crab-idle-3" type="Sprite2D" parent="."]
+position = Vector2(400, 240)
+texture = ExtResource("5_k2tuk")
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowModeOptionButton" to="." method="_on_window_mode_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
